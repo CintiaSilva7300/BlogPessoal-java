@@ -3,8 +3,11 @@ package com.generation.blogpessoal.model;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.UpdateTimestamp;
-import jakarta.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,8 +34,19 @@ public class Postagem {
 	@UpdateTimestamp //pega a data atual
 	private LocalDateTime data;
 
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Tema tema;
 	
 	
+	public Tema getTema() {
+		return tema;
+	}
+
+	public void setTema(Tema tema) {
+		this.tema = tema;
+	}
+
 	public Long getId() {
 		return id;
 	}
