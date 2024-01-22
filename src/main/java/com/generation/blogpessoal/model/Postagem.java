@@ -42,7 +42,6 @@ public class Postagem {
 	@JsonIgnoreProperties("postagem")
 	private Usuario usuario; 
 	
-	
 	public Usuario getUsuario() {
 		return usuario;
 	}
