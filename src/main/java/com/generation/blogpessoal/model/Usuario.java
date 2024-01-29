@@ -22,23 +22,23 @@ import jakarta.validation.constraints.Size;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotNull(message = "O nome é obrigatorio.")
 	private String nome;
-	
+
 	@NotNull(message = "O Usuario é obrigatorio.")
 	@Email(message = "O email deve ser um email valido.")
 	private String usuario;
-	
+
 	@NotBlank(message = "A senha é obrigatoria.")
 	@Size(min = 8, message = "A senha precisa conter no minimo 8 caracter.")
 	private String senha;
-	
+
 	@Size(max = 9000, message = "O link da foto deve conter no maximo 9000")
 	private String foto;
-	
+
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "usuario", cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties("usuario")
 	private List<Postagem> postagem;
@@ -89,6 +89,17 @@ public class Usuario {
 
 	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
-	} 
-	
+	}
+
+	public Usuario(Long id, String nome, String usuario, String senha, String foto) {
+		this.id = id;
+		this.nome = nome;
+		this.usuario = usuario;
+		this.senha = senha;
+		this.foto = foto;
+	}
+
+	public Usuario() {
+		
+	}
 }

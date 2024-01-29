@@ -27,7 +27,7 @@ public class UsuarioService {
 
     @Autowired
     private AuthenticationManager authenticationManager;
-
+    
 	public Optional<Usuario> cadastrarUsuario(Usuario usuario) {
 
 		if (usuarioRepository.findByUsuario(usuario.getUsuario()).isPresent())
